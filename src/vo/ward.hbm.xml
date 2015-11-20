@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="vo.WardVo" table="ward">
+
+		<id name="wardId" type="int" column="wardId">
+			<generator class="increment" />
+		</id>
+
+		<property name="wardName" >
+			<column name="wardName" />
+		</property>
+
+		<property name="wardDes" >
+			<column name="wardDes" />
+		</property>
+		<many-to-one name="zoneref" column="zoneId" class="vo.ZoneVo"></many-to-one>
+		
+
+	
+ 	</class>
+
+</hibernate-mapping>
