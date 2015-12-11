@@ -3,7 +3,133 @@
 <!doctype html>
 <html class="fixed">
 <head>
+<script>
+function loadWard()
+	{
+	  
 
+		var zoneId=document.getElementById("zoneId");
+		var xmlhttp;
+		//alert("2222");
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  	xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+		  	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		
+				removeAllWard();
+		
+		xmlhttp.onreadystatechange = function() 
+		{
+			if (xmlhttp.readyState == 4)
+			{
+				var jsonObj = JSON.parse(xmlhttp.responseText);
+				for(i=0 ; i < jsonObj.length ; i++)
+				{
+					var createOption=document.createElement("option");
+					
+					createOption.value=jsonObj[i].wardId;
+					createOption.text=jsonObj[i].wardName;
+					
+					document.roadForm.wardId.options.add(createOption);
+					
+				}
+			}
+			else
+			{
+				loader();
+			}
+		}
+		//alert("zzz is jj");
+		xmlhttp.open("get", "${pageContext.request.contextPath}/AreaController?flag=loadWard&zoneId="+zoneId.value, true);
+		
+		xmlhttp.send();
+		/* jQuery(".chosen-select1").chosen({'width':'100%','white-space':'nowrap'}); */
+		/* Holds the status of the XMLHttpRequest. Changes from 0 to 4:
+			0: request not initialized
+			1: server connection established
+			2: request received
+			3: processing request
+			4: request finished and response is ready */
+	}
+	
+  
+  function removeAllWard()
+	{
+	  var removeWard=document.roadForm.wardId.options.length;
+		for(i=removeWard ; i>0 ; i-- )
+		{
+			document.roadForm.wardId.remove(i);
+		}
+	}
+  
+</script>
+<script>
+  function loadArea()
+	{
+	  
+
+		var wardId=document.getElementById("wardId");
+		var xmlhttp;
+		//alert("2222");
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  	xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+		  	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		
+		 removeAllArea();
+		
+		xmlhttp.onreadystatechange = function() 
+		{
+			if (xmlhttp.readyState == 4)
+			{
+				var jsonObj = JSON.parse(xmlhttp.responseText);
+				for(i=0 ; i < jsonObj.length ; i++)
+				{
+					var createOption=document.createElement("option");
+					
+					createOption.value=jsonObj[i].areaId;
+					createOption.text=jsonObj[i].areaName;
+					
+					document.roadForm.areaId.options.add(createOption);
+					
+				}
+			}
+			else
+			{
+				loader();
+			}
+		} 
+		//alert("zzz is jj");
+		xmlhttp.open("get", "${pageContext.request.contextPath}/RoadsideunitController?flag=loadArea&wardId="+wardId.value, true);
+		xmlhttp.send();
+		/* jQuery(".chosen-select1").chosen({'width':'100%','white-space':'nowrap'}); */
+		/* Holds the status of the XMLHttpRequest. Changes from 0 to 4:
+			0: request not initialized
+			1: server connection established
+			2: request received
+			3: processing request
+			4: request finished and response is ready */
+	}
+	
+  
+  function removeAllArea()
+	{
+	  var removeArea=document.roadForm.areaId.options.length;
+		for(i=removeArea ; i>0 ; i-- )
+		{
+			document.roadForm.areaId.remove(i);
+		}
+	}
+
+</script>
 <!-- Basic -->
 <meta charset="UTF-8">
 
@@ -49,115 +175,118 @@
 <script src="assets/vendor/modernizr/modernizr.js"></script>
 </head>
 <body>
+
 	<section class="body">
 
 		<!-- start: header -->
-		<jsp:include page="header.jsp"/>
+		<jsp:include page="header.jsp" />
 		<!-- end: header -->
 
 		<div class="inner-wrapper">
 			<!-- start: sidebar -->
-			<jsp:include page="menu.jsp"/>
+			<jsp:include page="menu.jsp" />
 			<!-- end: sidebar -->
+			<form action=" <%=request.getContextPath()%>/RoadsideunitController"
+				method="POST" name="roadForm">
+				<section role="main" class="content-body">
+					<jsp:include page="page_header.jsp" />
+					<!-- hinal block start -->
+					<header class="panel-heading">
+						<div class="panel-actions">
+							<a href="#" class="panel-action panel-action-toggle"
+								data-panel-toggle></a> <a href="#"
+								class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+						</div>
 
-			<section role="main" class="content-body">
-				<jsp:include page="page_header.jsp"/>
-
-
-
-
-				<!-- hinal block start -->
-				<header class="panel-heading">
-					<div class="panel-actions">
-						<a href="#" class="panel-action panel-action-toggle"
-							data-panel-toggle></a> <a href="#"
-							class="panel-action panel-action-dismiss" data-panel-dismiss></a>
-					</div>
-
-					<h2 class="panel-title">ADD ROAD SIDE UNIT</h2>
-					<!-- <p class="panel-subtitle">
+						<h2 class="panel-title">ADD ROAD SIDE UNIT</h2>
+						<!-- <p class="panel-subtitle">
 											Basic validation will display a label with the error after the form control.
 										</p> -->
-				</header>
+					</header>
 
 
-				<div class="panel-body">
-					<div class="form-group">
-						<label class="col-md-3 control-label" for="inputSuccess">Select Dustbin</label>
-						<div class="col-md-6">
-							<select class="form-control mb-md">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select> 
+					<div class="panel-body">
+						<div class="form-group">
+							<label class="col-md-3 control-label" for="inputSuccess">Select
+								Dustbin</label>
+								<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+							<div class="col-md-6">
+								<select name="dustId" class="form-control mb-md">
+								<option>Choose One</option>
+									<c:forEach items="${sessionScope.dust }" var="x">
+												<option value="${x.dustId }">${x.dustName }</option>
+												</c:forEach>
+								</select>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label" for="inputSuccess">Select Zone</label>
-						<div class="col-md-6">
-							<select class="form-control mb-md">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select> 
+						<div class="form-group">
+							<label class="col-md-3 control-label" for="inputSuccess">Select
+								Zone</label>
+							<div class="col-md-6">
+							<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+								<select name="zoneId" class="form-control mb-md"  id="zoneId" onchange="loadWard()">
+								<option>Choose One</option>
+									<c:forEach items="${sessionScope.zone }" var="x">
+												<option value="${x.zoneId }">${x.zoneName }</option>
+												</c:forEach>
+								</select>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label" for="inputSuccess">Select Ward</label>
-						<div class="col-md-6">
-							<select class="form-control mb-md">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select> 
+						<div class="form-group">
+							<label class="col-md-3 control-label" for="inputSuccess">Select
+								Ward</label>
+							<div class="col-md-6">
+							<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+								<select name="wardId" class="form-control mb-md" id="wardId" onchange="loadArea()">
+								<option>Choose One</option>
+									<c:forEach items="${sessionScope.ward }" var="x">
+												<option value="${x.wardId }">${x.wardName }</option>
+												</c:forEach>
+								</select>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label" for="inputSuccess">Select Area</label>
-						<div class="col-md-6">
-							<select class="form-control mb-md">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select> 
+						<div class="form-group">
+							<label class="col-md-3 control-label" for="inputSuccess">Select
+								Area</label>
+							<div class="col-md-6">
+							<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+								<select name="areaId" class="form-control mb-md">
+								<option>Choose One</option>
+									<c:forEach items="${sessionScope.area }" var="x">
+												<option value="${x.areaId }">${x.areaName }</option>
+												</c:forEach>
+								</select>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label">Longitude <span
-							class="required"></span></label>
-						<div class="col-md-6">
-							<input type="text" name="fullname" class="form-control"
-								placeholder="" required />
+						<div class="form-group">
+							<label class="col-md-3 control-label">Longitude <span
+								class="required"></span></label>
+							<div class="col-md-6">
+								<input type="text" name="longi" class="form-control"
+									placeholder="" required />
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label" for="textareaAutosize">Latitude</label>
-						<div class="col-md-6">
-							<input type="text" name="fullname" class="form-control"
-								placeholder="" required />
+						<div class="form-group">
+							<label class="col-md-3 control-label" for="textareaAutosize">Latitude</label>
+							<div class="col-md-6">
+								<input type="text" name="lati" class="form-control"
+									placeholder="" required />
+							</div>
 						</div>
-					</div>
 
 
 
-				</div>
-				<footer class="panel-footer">
-					<div class="row">
-						<div class="col-sm-9 col-sm-offset-3">
-							<button class="btn btn-primary">Submit</button>
-							<button type="reset" class="btn btn-default">Reset</button>
-						</div>
 					</div>
-				</footer>
-			</section>
+					<footer class="panel-footer">
+						<div class="row">
+						<input type="hidden" name="flag" value="insert">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">Submit</button>
+								<button type="reset" class="btn btn-default">Reset</button>
+							</div>
+						</div>
+					</footer>
+				</section>
 			</form>
 		</div>
 

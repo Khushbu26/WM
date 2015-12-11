@@ -52,78 +52,90 @@
 	<section class="body">
 
 		<!-- start: header -->
-		<jsp:include page="c_header.jsp"/>
+		<jsp:include page="c_header.jsp" />
 		<!-- end: header -->
 
 		<div class="inner-wrapper">
 			<!-- start: sidebar -->
-			<jsp:include page="c_menu.jsp"/>
+			<jsp:include page="c_menu.jsp" />
 			<!-- end: sidebar -->
-
-			<section role="main" class="content-body">
-				<jsp:include page="c_page_header.jsp"/>
-
-
-
+			<form method="post"
+				action="<%=request.getContextPath()%>/CAssignAreaController">
+				<section role="main" class="content-body">
+					<jsp:include page="c_page_header.jsp" />
 
 
-				<!-- hinal block start -->
-				<header class="panel-heading">
-					<div class="panel-actions">
-						<a href="#" class="panel-action panel-action-toggle"
-							data-panel-toggle></a> <a href="#"
-							class="panel-action panel-action-dismiss" data-panel-dismiss></a>
-					</div>
 
-					<h2 class="panel-title">Assign Area To Staff</h2>
-					<!-- <p class="panel-subtitle">
+
+
+					<!-- hinal block start -->
+					<header class="panel-heading">
+						<div class="panel-actions">
+							<a href="#" class="panel-action panel-action-toggle"
+								data-panel-toggle></a> <a href="#"
+								class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+						</div>
+
+						<h2 class="panel-title">Assign Area To Staff</h2>
+						<!-- <p class="panel-subtitle">
 											Basic validation will display a label with the error after the form control.
 										</p> -->
-				</header>
+					</header>
 
 
-				<div class="panel-body">
-					<div class="form-group">
-						<label class="col-md-3 control-label">Labor Name <span
-							class="required"></span></label>
-						<div class="col-md-6">
-							<input type="text" name="fullname" class="form-control"
-								placeholder="" required />
+					<div class="panel-body">
+						<div class="form-group">
+							<label class="col-md-3 control-label">Labor Name <span
+								class="required"></span></label>
+							<div class="col-md-6">
+								<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+								<select name="cStaff" class="form-control mb-md">
+									<c:forEach items="${sessionScope.cStaff }" var="x">
+										<option value="${x.staffId }">${x.employeeName }</option>
+									</c:forEach>
+								</select>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label" for="inputSuccess">Area</label>
-						<div class="col-md-6">
-							<select class="form-control mb-md">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select>
+						
+						<div class="panel-body">
+						<div class="form-group">
+							<label class="col-md-3 control-label">Assign Area to Labour <span
+								class="required"></span></label>
+							<div class="col-md-6">
+								<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+								<select name="area" class="form-control mb-md">
+									<c:forEach items="${sessionScope.areaName }" var="x">
+										<option value="${x.areaId }">${x.areaName }</option>
+									</c:forEach>
+								</select>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label" for="textareaAutosize">Van
-							No.</label>
-						<div class="col-md-6">
-							<input type="text" name="fullname" class="form-control"
-								placeholder="" required />
-						</div>
-					</div>
+						<%-- <div class="form-group">
+							<label class="col-md-3 control-label" for="inputSuccess">Area</label>
+							<div class="col-md-6">
+								<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+								<select name="cStaff" class="form-control mb-md">
+									<c:forEach items="${sessionScope.cStaff }" var="x">
+										<option value="${x.staffId }">${x.employeeName }</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div> --%>
 
 
 
-				</div>
-				<footer class="panel-footer">
-					<div class="row">
-						<div class="col-sm-9 col-sm-offset-3">
-							<button class="btn btn-primary">Submit</button>
-							<button type="reset" class="btn btn-default">Reset</button>
-						</div>
+
 					</div>
-				</footer>
-			</section>
+					<footer class="panel-footer">
+						<div class="row">
+							<div class="col-sm-9 col-sm-offset-3">
+							<input type="hidden" value="insert" name="flag">
+								<button class="btn btn-primary">Submit</button>
+								<button type="reset" class="btn btn-default">Reset</button>
+							</div>
+						</div>
+					</footer>
+				</section>
 			</form>
 		</div>
 

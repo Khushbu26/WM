@@ -76,33 +76,18 @@
 						<h2 class="panel-title">Search Road Side Unit</h2>
 					</header>
 					<div class="panel-body">
-						<!-- <div class="row">
-									<div class="col-sm-6">
-										<div class="mb-md">
-											<button id="addToTable" class="btn btn-primary">Add <i class="fa fa-plus"></i></button>
-										</div>
-									</div>
-								</div> -->
+					
 						<div id="datatable-editable_wrapper"
 							class="dataTables_wrapper no-footer">
-						<div class="row datatables-header form-inline">
-								<div class="col-sm-12 col-md-6">
-									<div class="dataTables_length" id="datatable-editable_length">
-										<label><select name="datatable-editable_length"
-											aria-controls="datatable-editable" class=""><option
-													value="10">10</option>
-												<option value="25">25</option>
-												<option value="50">50</option>
-												<option value="100">100</option></select> records per page</label>
-									</div>
-								</div>
-								<div class="col-sm-12 col-md-6">
+							<div class="row datatables-header form-inline">
+								
+								<!-- <div class="col-sm-12 col-md-6">
 									<div id="datatable-editable_filter" class="dataTables_filter">
 										<label><input type="search" class="" placeholder=""
 											aria-controls="datatable-editable"></label>
 									</div>
-								</div>
-							</div> 
+								</div> -->
+							</div>
 							<div class="table-responsive">
 								<table
 									class="table table-bordered table-striped mb-none dataTable no-footer"
@@ -110,15 +95,15 @@
 									aria-describedby="datatable-editable_info">
 									<thead>
 										<tr role="row">
-										<th class="sorting" tabindex="0"
+											<th class="sorting" tabindex="0"
 												aria-controls="datatable-editable" rowspan="1" colspan="1">Dustbin</th>
 											<th class="sorting" tabindex="0"
 												aria-controls="datatable-editable" rowspan="1" colspan="1">Zone</th>
 											<th class="sorting" tabindex="0"
 												aria-controls="datatable-editable" rowspan="1" colspan="1">Ward</th>
-<th class="sorting" tabindex="0"
+											<th class="sorting" tabindex="0"
 												aria-controls="datatable-editable" rowspan="1" colspan="1">Area</th>
-												<th class="sorting" tabindex="0"
+											<th class="sorting" tabindex="0"
 												aria-controls="datatable-editable" rowspan="1" colspan="1">Longitude</th>
 											<th class="sorting" tabindex="0"
 												aria-controls="datatable-editable" rowspan="1" colspan="1">Latitude</th>
@@ -129,45 +114,32 @@
 									<tbody>
 
 
-										<tr class="gradeX odd" role="row">
+										<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+										<c:forEach items="${sessionScope.road }" var="x">
+											<tr>
+												<td>${x.dustbinRef.dustName}</td>
+												<td>${x.zoneRef.zoneName}</td>
+												<td>${x.wardRef.wardName}</td>
 
-											<td>Win 95+</td>
-											<td>Win 95+</td>
-											<td>Win 95+</td>
-											<td>Win 95+</td>
-											<td>Win 95+</td>
-											<td>Win 95+</td>
-											<td class="actions"><a href="#"
-												class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-												<a href="#" class="hidden on-editing cancel-row"><i
-													class="fa fa-times"></i></a> <a href="#"
-												class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-												<a href="#" class="on-default remove-row"><i
-													class="fa fa-trash-o"></i></a></td>
-										</tr>
+												<td>${x.areaRef.areaName}</td>
+												
+												<td>${x.longi}</td>
+												<td>${x.lati}</td>
+												<td class="actions">
+												
+											<a href="<%=request.getContextPath() %>/RoadsideunitController?flag=edit&id=${x.roadId}" class="btn" rel="tooltip" title="Edit">
+									<i class="fa fa-edit"></i>
+								</a>
+								<a href="<%=request.getContextPath() %>/RoadsideunitController?flag=delete&id=${x.roadId}" class="btn" rel="tooltip" title="Delete">
+									<i class="fa fa-times"></i>
+								</a>
+										</td>
+											</tr>
+											</c:forEach>
 									</tbody>
 								</table>
 							</div>
-							<div class="row datatables-footer">
-								<div class="col-sm-12 col-md-6">
-									<div class="dataTables_info" id="datatable-editable_info"
-										role="status" aria-live="polite">Showing 1 to 1 of 1
-										entries</div>
-								</div> 
-								 <div class="col-sm-12 col-md-6">
-									<div class="dataTables_paginate paging_bs_normal"
-										id="datatable-editable_paginate">
-										<ul class="pagination">
-											<li class="prev disabled"><a href="#"><span
-													class="fa fa-chevron-left"></span></a></li>
-											<li class="active"><a href="#">1</a></li>
-											<li class="next disabled"><a href="#"><span
-													class="fa fa-chevron-right"></span></a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
+													</div>
 					</div>
 				</section>
 				<!-- end: page -->

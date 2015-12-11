@@ -85,7 +85,7 @@
 								</div> -->
 						<div id="datatable-editable_wrapper"
 							class="dataTables_wrapper no-footer">
-						<div class="row datatables-header form-inline">
+							<!-- <div class="row datatables-header form-inline">
 								<div class="col-sm-12 col-md-6">
 									<div class="dataTables_length" id="datatable-editable_length">
 										<label><select name="datatable-editable_length"
@@ -102,7 +102,7 @@
 											aria-controls="datatable-editable"></label>
 									</div>
 								</div>
-							</div>
+							</div> -->
 							<div class="table-responsive">
 								<table
 									class="table table-bordered table-striped mb-none dataTable no-footer"
@@ -111,53 +111,61 @@
 									<thead>
 										<tr role="row">
 											<th class="sorting" tabindex="0"
-												aria-controls="datatable-editable" rowspan="1" colspan="1">Labor Name</th>
+												aria-controls="datatable-editable" rowspan="1" colspan="1">StaffCategory</th>
+											<th class="sorting" tabindex="0"
+												aria-controls="datatable-editable" rowspan="1" colspan="1">Employee
+												Name</th>
 											<th class="sorting" tabindex="0"
 												aria-controls="datatable-editable" rowspan="1" colspan="1">Address</th>
-												<th class="sorting" tabindex="0"
-												aria-controls="datatable-editable" rowspan="1" colspan="1">City</th>
-												<th class="sorting" tabindex="0"
-												aria-controls="datatable-editable" rowspan="1" colspan="1">Pin</th>
-												<th class="sorting" tabindex="0"
-												aria-controls="datatable-editable" rowspan="1" colspan="1">Contact</th>
-
 											<th class="sorting" tabindex="0"
-												aria-controls="datatable-editable" rowspan="1" colspan="1">Reg_No.</th>
+												aria-controls="datatable-editable" rowspan="1" colspan="1">Pin</th>
+											<th class="sorting" tabindex="0"
+												aria-controls="datatable-editable" rowspan="1" colspan="1">Contact</th>
+											<th class="sorting" tabindex="0"
+												aria-controls="datatable-editable" rowspan="1" colspan="1">Email</th>
+
 											<th class="sorting" tabindex="0"
 												aria-controls="datatable-editable" rowspan="1" colspan="1">Actions</th>
 										</tr>
 									</thead>
 									<tbody>
 
+										<%
+											System.out.println("in search.jsp");
+										%>
+										<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+										<c:forEach items="${sessionScope.staffreg }" var="x">
+											<tr class="gradeX odd" role="row">
 
-										<tr class="gradeX odd" role="row">
+												<td>${x.staff}</td>
+												<td>${x.employeeName}</td>
+												<td>${x.address}</td>
+												<td>${x.pin}</td>
+												<td>${x.contactNo}</td>
+												<td>${x.email}</td>
+												
 
-											<td>Win 95+</td>
-											<td>Win 95+</td>
-											<td>Win 95+</td>
-											<td>Win 95+</td>
-											<td>Win 95+</td>
-											<td>Win 95+</td>
-											
-											
-											<td class="actions"><a href="#"
-												class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-												<a href="#" class="hidden on-editing cancel-row"><i
-													class="fa fa-times"></i></a> <a href="#"
-												class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-												<a href="#" class="on-default remove-row"><i
-													class="fa fa-trash-o"></i></a></td>
-										</tr>
+												<td class="actions"><a href="#"
+													class="hidden on-editing save-row"><i
+														class="fa fa-save"></i></a> <a href="#"
+													class="hidden on-editing cancel-row"><i
+														class="fa fa-times"></i></a> <a href="#"
+													class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+													<a href="#" class="on-default remove-row"><i
+														class="fa fa-trash-o"></i></a></td>
+											</tr>
+										</c:forEach>
 									</tbody>
+
 								</table>
 							</div>
-							<div class="row datatables-footer">
-								 <div class="col-sm-12 col-md-6">
+							<!-- <div class="row datatables-footer">
+								<div class="col-sm-12 col-md-6">
 									<div class="dataTables_info" id="datatable-editable_info"
 										role="status" aria-live="polite">Showing 1 to 1 of 1
 										entries</div>
-								</div> 
-								 <div class="col-sm-12 col-md-6">
+								</div>
+								<div class="col-sm-12 col-md-6">
 									<div class="dataTables_paginate paging_bs_normal"
 										id="datatable-editable_paginate">
 										<ul class="pagination">
@@ -168,8 +176,8 @@
 													class="fa fa-chevron-right"></span></a></li>
 										</ul>
 									</div>
-								</div> 
-							</div>
+								</div>
+							</div> -->
 						</div>
 					</div>
 				</section>

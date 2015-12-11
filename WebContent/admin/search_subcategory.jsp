@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!doctype html>
 <html class="fixed">
 <head>
@@ -124,21 +125,25 @@
 									</thead>
 									<tbody>
 
+										<c:forEach items="${sessionScope.subcategory }" var="x">
+											<tr class="gradeX odd" role="row">
 
-										<tr class="gradeX odd" role="row">
-
-											<td>Win 95+</td>
-											<td>Win 95+</td>
-
-											<td>Win 95+</td>
-											<td class="actions"><a href="#"
-												class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-												<a href="#" class="hidden on-editing cancel-row"><i
-													class="fa fa-times"></i></a> <a href="#"
-												class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-												<a href="#" class="on-default remove-row"><i
-													class="fa fa-trash-o"></i></a></td>
-										</tr>
+												
+								<td>${x.catRef.categoryName	}</td>
+								<td>${x.subcategoryName}</td>
+								<td>${x.subcategoryDes}</td>
+								<td class="actions">
+													<%
+														System.out.println("in search");
+													%> <a href="<%=request.getContextPath() %>/SubcategoryController?flag=edit&id=${x.subcategoryId}"	class="btn" rel="tooltip" title="Edit"> 
+													<i class="fa fa-pencil"></i>
+												</a> <%	System.out.println("in search"); %> 
+												<a href="<%=request.getContextPath() %>/SubcategoryController?flag=delete&id=${x.subcategoryId}" class="btn" rel="tooltip" title="Delete">
+												 <i class="fa fa-trash-o"></i>
+												</a>
+												</td>
+											</tr>
+											</c:forEach>
 									</tbody>
 								</table>
 							</div>

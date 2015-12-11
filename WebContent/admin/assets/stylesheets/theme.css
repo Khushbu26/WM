@@ -5,10 +5,14 @@ Theme Version: 	1.4.1
 */
 html,
 body {
-	background: #ecedf0;
+	background: #c1bdba;
 	width: 100%;
 }
-
+body-signin {
+  background: #c1bdba;
+  font-family: 'Titillium Web', sans-serif;
+  background-image: url("../example/slide_22.jpg");
+}
 html {
 	font-size: 10px;
 }

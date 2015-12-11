@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!doctype html>
 <html class="fixed">
 <head>
@@ -49,6 +50,8 @@
 <script src="assets/vendor/modernizr/modernizr.js"></script>
 </head>
 <body>
+
+	<form action="<%=request.getContextPath()%>/SubcategoryController" method="post">
 	<section class="body">
 
 		<!-- start: header -->
@@ -86,20 +89,18 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="inputSuccess">Select Category</label>
 						<div class="col-md-6">
-							<select class="form-control mb-md">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select> 
+							<select name="categoryId" class="form-control mb-md">
+								<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+												<c:forEach items="${sessionScope.category }" var="x">
+												<option value="${x.categoryId }">${x.categoryName }</option>
+												</c:forEach>							</select> 
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label">Add Subcategory <span
 							class="required"></span></label>
 						<div class="col-md-6">
-							<input type="text" name="fullname" class="form-control"
+							<input type="text" name="subcat" class="form-control"
 								placeholder="Add subcategory" required />
 						</div>
 					</div>
@@ -107,7 +108,7 @@
 						<label class="col-md-3 control-label" for="textareaAutosize">Subcategory
 							Description</label>
 						<div class="col-md-6">
-							<textarea class="form-control" rows="3" id="textareaAutosize"
+							<textarea name="subcat_des" class="form-control" rows="3" id="textareaAutosize"
 								data-plugin-textarea-autosize></textarea>
 						</div>
 					</div>
@@ -117,6 +118,7 @@
 				</div>
 				<footer class="panel-footer">
 					<div class="row">
+					<input type="hidden" name="flag" value="insert">
 						<div class="col-sm-9 col-sm-offset-3">
 							<button class="btn btn-primary">Submit</button>
 							<button type="reset" class="btn btn-default">Reset</button>

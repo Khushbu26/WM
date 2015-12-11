@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <!doctype html>
 <html class="fixed">
 <head>
@@ -122,24 +123,28 @@
 												aria-controls="datatable-editable" rowspan="1" colspan="1">Actions</th>
 										</tr>
 									</thead>
-									<tbody>
+									<c:forEach items="${sessionScope.area }" var="x">
+										<tbody>
 
 
-										<tr class="gradeX odd" role="row">
+											<tr class="gradeX odd" role="row">
 
-											<td>Win 95+</td>
-											<td>Win 95+</td>
-											<td>Win 95+</td>
-											<td>Win 95+</td>
-											<td class="actions"><a href="#"
-												class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-												<a href="#" class="hidden on-editing cancel-row"><i
-													class="fa fa-times"></i></a> <a href="#"
-												class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-												<a href="#" class="on-default remove-row"><i
-													class="fa fa-trash-o"></i></a></td>
-										</tr>
-									</tbody>
+												<td>${x.zoneref.zoneName}</td>
+												<td>${x.wardref.wardName}</td>
+												<td>${x.areaName}</td>
+												<td>${x.areaDes}</td>
+												<td class="actions"><a
+													href="<%=request.getContextPath() %>/AreaController?flag=edit&id=${x.areaId}"
+													class="btn" rel="tooltip" title="Edit"> <i
+														class="fa fa-pencil"></i>
+												</a> <a
+													href="<%=request.getContextPath() %>/AreaController?flag=delete&id=${x.areaId}"
+													class="btn" rel="tooltip" title="Delete"> <i
+														class="fa fa-trash-o"></i>
+												</a></td>
+											</tr>
+										</tbody>
+										</c:forEach>
 								</table>
 							</div>
 							<div class="row datatables-footer">

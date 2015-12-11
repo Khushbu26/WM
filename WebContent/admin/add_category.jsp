@@ -58,7 +58,7 @@
 		<div class="inner-wrapper">
 			<!-- start: sidebar -->
 			<jsp:include page="menu.jsp"/>			<!-- end: sidebar -->
-
+	<form action="<%=request.getContextPath()%>/CategoryController" method="post">
 			<section role="main" class="content-body">
 				<jsp:include page="page_header.jsp"/>
 
@@ -86,14 +86,14 @@
 						<label class="col-md-3 control-label">Add Category <span
 							class="required"></span></label>
 						<div class="col-md-6">
-							<input type="text" name="fullname" class="form-control"
+							<input type="text" name="category" class="form-control"
 								placeholder="Add Category" required />
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="textareaAutosize">Category Description</label>
 						<div class="col-md-6">
-							<textarea class="form-control" rows="3" id="textareaAutosize"
+							<textarea name="categoryDes" class="form-control" rows="3" id="textareaAutosize"
 								data-plugin-textarea-autosize></textarea>
 						</div>
 					</div>
@@ -104,6 +104,7 @@
 				<footer class="panel-footer">
 					<div class="row">
 						<div class="col-sm-9 col-sm-offset-3">
+						<input type="hidden" name="flag" value="insert">
 							<button class="btn btn-primary">Submit</button>
 							<button type="reset" class="btn btn-default">Reset</button>
 						</div>

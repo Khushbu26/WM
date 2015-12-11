@@ -50,7 +50,7 @@
 						<!-- end: header -->
 
 			<div class="inner-wrapper">
-				<!-- start: sidebar -->
+				<!-- start: sidebar --> 0
 				<jsp:include page="menu.jsp"/>				<!-- end: sidebar -->
 
 				<section role="main" class="content-body">
@@ -156,7 +156,7 @@
 													<a href="#" data-val="28">Annual Goal</a>
 												</div>
 											</div>
-										</div>
+										</div>o
 									</div>
 								</div>
 							</section>

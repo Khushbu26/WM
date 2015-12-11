@@ -125,21 +125,27 @@
 									</thead>
 									<tbody>
 
-
+										<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+										<c:forEach items="${sessionScope.schedule }" var="x">
 										<tr class="gradeX odd" role="row">
-											<td>1</td>
-											<td>Win 95+</td>
+											<td>${x.scheduleId}</td>
+											<td>${x.areaRef.areaName}</td>
+											<td>${x.timePick }</td>
 
 
-											<td>Win 95+</td>
-											<td class="actions"><a href="#"
-												class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-												<a href="#" class="hidden on-editing cancel-row"><i
-													class="fa fa-times"></i></a> <a href="#"
-												class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-												<a href="#" class="on-default remove-row"><i
-													class="fa fa-trash-o"></i></a></td>
+											
+											<td class="actions">
+													<%
+														System.out.println("in search");
+													%> <a href="<%=request.getContextPath() %>/ScheduleController?flag=edit&id=${x.scheduleId}"	class="btn" rel="tooltip" title="Edit"> 
+													<i class="fa fa-pencil"></i>
+												</a> <%	System.out.println("in search"); %> 
+												<a href="<%=request.getContextPath() %>/ScheduleController?flag=delete&id=${x.scheduleId}" class="btn" rel="tooltip" title="Delete">
+												 <i class="fa fa-trash-o"></i>
+												</a>
+												</td>
 										</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>

@@ -42,41 +42,42 @@
 									</li>
 									<li class="nav-parent">
 										<a>
-											<i class="fa fa-list-alt" aria-hidden="true"></i>
+											<i class="fa fa-user" aria-hidden="true"></i>
 											<span>Manage Staff</span>
 										</a>
 										<ul class="nav nav-children">
 											<li>
 												<a href="c_staffReg.jsp">
-													 Add Staff
+													  Add Staff
 												</a>
 											</li>
 											<li>
-												<a href="c_search_staff.jsp">
-													 Search Staff
+												<a href="<%=request.getContextPath()%>/CStaffRegController?flag=search">
+													  Search Staff
 												</a>
 											</li>
 											
 										</ul>
-									</li><li class="nav-parent">
+									</li>
+									<li class="nav-parent">
 										<a>
-											<i class="fa fa-list-alt" aria-hidden="true"></i>
+											<i class="fa fa-map-marker" aria-hidden="true"></i>
 											<span>Manage Assign Area</span>
 										</a>
 										<ul class="nav nav-children">
 											<li>
-												<a href="c_assign_area.jsp">
+												<a href="<%=request.getContextPath()%>/CAssignAreaController?flag=load">
 													 Assign Area to Staff
 												</a>
 											</li>
 											<li>
-												<a href="c_search_located_area.jsp">
-													 Search Located Area
+												<a href="<%=request.getContextPath()%>/CAssignAreaController?flag=search">
+													Search Located Area
 												</a>
 											</li>
 											
 										</ul>
-									</li><li class="nav-parent">
+									</li><!-- <li class="nav-parent">
 										<a>
 											<i class="fa fa-list-alt" aria-hidden="true"></i>
 											<span>Manage Complaint</span>
@@ -89,8 +90,28 @@
 											</li>
 											
 										</ul>
+									</li> -->
+									<li class="nav-parent">
+										<a>
+											<i class="fa fa-comments" aria-hidden="true"></i>
+											<span>Notification</span>
+										</a>
+										<ul class="nav nav-children">
+											<li>
+												<a href="add_notification.jsp">
+													Generate Notification
+												</a>
+											</li>
+											<li>
+												<a href="search_notification.jsp">
+													View Notification
+												</a>
+											</li>
+											
+										</ul>
 									</li>
-									
+									</ul>
+									</nav>
 									
 									
 							

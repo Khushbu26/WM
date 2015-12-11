@@ -14,7 +14,7 @@
 							<nav id="menu" class="nav-main" role="navigation">
 								<ul class="nav nav-main">
 									<li class="nav-active">
-										<a href="index.html">
+										<a href="index.jsp">
 											<i class="fa fa-home" aria-hidden="true"></i>
 											<span>Dashboard</span>
 										</a>
@@ -93,7 +93,7 @@
 												</a>
 											</li>
 											<li>
-												<a href="search_dustbin.jsp">
+												<a href="<%=request.getContextPath()%>/DustbinController?flag=search">
 													 Search Dustbin
 												</a>
 											</li>
@@ -111,7 +111,7 @@
 												</a>
 											</li>
 											<li>
-												<a href="search_category.jsp">
+												<a href="<%=request.getContextPath() %>/CategoryController?flag=search">
 													 Search Category
 												</a>
 											</li>
@@ -124,12 +124,12 @@
 										</a>
 										<ul class="nav nav-children">
 											<li>
-												<a href="add_subcategory.jsp">
+												<a href="<%=request.getContextPath() %>/SubcategoryController?flag=load">
 													Add Subcategory
 												</a>
 											</li>
 											<li>
-												<a href="search_subcategory.jsp">
+												<a href="<%=request.getContextPath() %>/SubcategoryController?flag=search">
 													 Search Subcategory
 												</a>
 											</li>
@@ -166,7 +166,7 @@
 												</a>
 											</li>
 											<li>
-												<a href="<%=request.getContextPath() %>/WardController?flag=search"">
+												<a href="<%=request.getContextPath() %>/WardController?flag=search">
 													Search Ward
 												</a>
 											</li>
@@ -179,12 +179,12 @@
 										</a>
 										<ul class="nav nav-children">
 											<li>
-												<a href="add_area.jsp">
+												<a href="<%=request.getContextPath() %>/AreaController?flag=load">
 													Add Area
 												</a>
 											</li>
 											<li>
-												<a href="search_area.jsp">
+												<a href="<%=request.getContextPath() %>/AreaController?flag=search">
 													 Search Area
 												</a>
 											</li>
@@ -197,12 +197,12 @@
 										</a>
 										<ul class="nav nav-children">
 											<li>
-												<a href="generate_schedule.jsp">
+											<a href="<%=request.getContextPath() %>/ScheduleController?flag=load">
 													 Generate Schedule
 												</a>
 											</li>
 											<li>
-												<a href="search_schedule.jsp">
+												<a href="<%=request.getContextPath()%>/ScheduleController?flag=search">
 													 View Schedule
 												</a>
 											</li>
@@ -215,12 +215,12 @@
 										</a>
 										<ul class="nav nav-children">
 											<li>
-												<a href="add_road_side_unit.jsp">
+												<a href="<%=request.getContextPath()%>/RoadsideunitController?flag=load">
 													Add Road Side Unit
 												</a>
 											</li>
 											<li>
-												<a href="search_road_side_unit.jsp">
+												<a href="<%=request.getContextPath()%>/RoadsideunitController?flag=search">
 													Search Road Side Unit
 												</a>
 											</li>
@@ -241,7 +241,18 @@
 											</li>
 											
 										</ul>
-									</li><li class="nav-parent">
+									</li>
+									<li class="nav-parent"><a> <i class="fa fa-edit "
+							aria-hidden="true"></i> <span>News & Events</span>
+					</a>
+						<ul class="nav nav-children">
+							
+							<li><a href="add_events.jsp">Add Events </a></li>
+							<li><a href="<%=request.getContextPath()%>/EventController?flag=search">Search Events </a></li>
+							
+
+						</ul></li>
+									<li class="nav-parent">
 										<a>
 											<i class="fa fa-comments" aria-hidden="true"></i>
 											<span>Notification</span>
@@ -261,58 +272,7 @@
 										</ul>
 									</li>
 									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									<li class="nav-parent">
+								<!-- 	<li class="nav-parent">
 										<a>
 											<i class="fa fa-copy" aria-hidden="true"></i>
 											<span>Pages</span>
@@ -713,14 +673,14 @@
 												</a>
 											</li>
 										</ul>
-									</li>
-									<li>
+									</li> -->
+									<!-- <li>
 										<a href="http://themeforest.net/item/porto-responsive-html5-template/4106987?ref=Okler" target="_blank">
 											<i class="fa fa-external-link" aria-hidden="true"></i>
 											<span>Front-End <em class="not-included">(Not Included)</em></span>
 										</a>
-									</li>
-									<li class="nav-parent">
+									</li> -->
+									<!-- <li class="nav-parent">
 										<a>
 											<i class="fa fa-align-left" aria-hidden="true"></i>
 											<span>Menu Levels</span>
@@ -752,13 +712,13 @@
 												</ul>
 											</li>
 										</ul>
-									</li>
+									</li> -->
 								</ul>
 							</nav>
 				
-							<hr class="separator" />
+							<!-- <hr class="separator" /> -->
 				
-							<div class="sidebar-widget widget-tasks">
+							<!-- <div class="sidebar-widget widget-tasks">
 								<div class="widget-header">
 									<h6>Projects</h6>
 									<div class="widget-toggle">+</div>
@@ -770,11 +730,11 @@
 										<li><a href="#">Porto Admin</a></li>
 									</ul>
 								</div>
-							</div>
+							</div> -->
 				
-							<hr class="separator" />
+							<!-- <hr class="separator" /> -->
 				
-							<div class="sidebar-widget widget-stats">
+							<!-- <div class="sidebar-widget widget-stats">
 								<div class="widget-header">
 									<h6>Company Stats</h6>
 									<div class="widget-toggle">+</div>
@@ -810,7 +770,7 @@
 										</li>
 									</ul>
 								</div>
-							</div>
+							</div> -->
 						</div>
 				
 					</div>

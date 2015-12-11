@@ -85,7 +85,7 @@
 								</div> -->
 						<div id="datatable-editable_wrapper"
 							class="dataTables_wrapper no-footer">
-						<!-- 	<div class="row datatables-header form-inline">
+							<!-- 	<div class="row datatables-header form-inline">
 								<div class="col-sm-12 col-md-6">
 									<div class="dataTables_length" id="datatable-editable_length">
 										<label><select name="datatable-editable_length"
@@ -111,6 +111,8 @@
 									<thead>
 										<tr role="row">
 											<th class="sorting" tabindex="0"
+												aria-controls="datatable-editable" rowspan="1" colspan="1">No.</th>
+											<th class="sorting" tabindex="0"
 												aria-controls="datatable-editable" rowspan="1" colspan="1">Zone</th>
 											<th class="sorting" tabindex="0"
 												aria-controls="datatable-editable" rowspan="1" colspan="1">Ward</th>
@@ -122,23 +124,34 @@
 										</tr>
 									</thead>
 									<tbody>
+										<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+										<c:forEach items="${sessionScope.ward }" var="x">
+											<tr class="gradeX odd" role="row">
+												<td>1</td>
 
 
-										<tr class="gradeX odd" role="row">
 
-											<c:forEach items="${sessionScope.ward }" var="x">
-				
-						<td>${x.zoneref.zoneName}</td>
-						<td>${x.wardName} </td>
-						<td>${x.wardDes}  </td>
+												<td>${x.zoneref.zoneName}</td>
+												<td>${x.wardName}</td>
+												<td>${x.wardDes}</td>
 												<td class="actions">
-												 <a href="<%=request.getContextPath() %>/Ward_Controller?flag=edit&id=${x.wardId}" class="btn" rel="tooltip" title="Edit">
-												 <i class="fa fa-pencil"></i>
-												 </a>
-													<a href="<%=request.getContextPath() %>/Ward_Controller?flag=delete&id=${x.wardId}" class="btn" rel="tooltip" title="Delete">
-													<i class="fa fa-trash-o"></i></a></td>
-													</c:forEach></tr>
-													
+													<%
+														System.out.println("in search");
+													%> <a
+													href="<%=request.getContextPath() %>/WardController?flag=edit&id=${x.wardId}"
+													class="btn" rel="tooltip" title="Edit"> <i
+														class="fa fa-pencil"></i>
+												</a> <%
+ 	System.out.println("in search");
+ %> <a
+													href="<%=request.getContextPath() %>/WardController?flag=delete&id=${x.wardId}"
+													class="btn" rel="tooltip" title="Delete"> <i
+														class="fa fa-trash-o"></i>
+												</a>
+												</td>
+											</tr>
+										</c:forEach>
+
 									</tbody>
 								</table>
 							</div>

@@ -52,78 +52,80 @@
 	<section class="body">
 
 		<!-- start: header -->
-		<jsp:include page="header.jsp"/>
+		<jsp:include page="header.jsp" />
 		<!-- end: header -->
 
 		<div class="inner-wrapper">
 			<!-- start: sidebar -->
-			<jsp:include page="menu.jsp"/>
+			<jsp:include page="menu.jsp" />
 			<!-- end: sidebar -->
-			<form a="<%=request.getContextPath()%>/WardController" method="POST">
-			<section role="main" class="content-body">
-				<jsp:include page="page_header.jsp"/>
+			<form action="<%=request.getContextPath()%>/WardController" method="POST">
+				<section role="main" class="content-body">
+					<jsp:include page="page_header.jsp" />
 
 
 
 
-				<!-- hinal block start -->
-				<header class="panel-heading">
-					<div class="panel-actions">
-						<a href="#" class="panel-action panel-action-toggle"
-							data-panel-toggle></a> <a href="#"
-							class="panel-action panel-action-dismiss" data-panel-dismiss></a>
-					</div>
+					<!-- hinal block start -->
+					<header class="panel-heading">
+						<div class="panel-actions">
+							<a href="#" class="panel-action panel-action-toggle"
+								data-panel-toggle></a> <a href="#"
+								class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+						</div>
 
-					<h2 class="panel-title">ADD WARD</h2>
-					<!-- <p class="panel-subtitle">
+						<h2 class="panel-title">ADD WARD</h2>
+						<!-- <p class="panel-subtitle">
 											Basic validation will display a label with the error after the form control.
 										</p> -->
-				</header>
+					</header>
 
 
-				<div class="panel-body">
-					<div class="form-group">
-						<label class="col-md-3 control-label" for="inputSuccess">Select Zone</label>
-						<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
-						<div class="col-md-6">
-							<select class="form-control mb-md" >
-							<c:forEach items="${sessionScope.zone }" var="x">
-							<option value="${x.zoneId }">${x.zoneName }</option>
-												</c:forEach>
-								
-							</select> 
+					<div class="panel-body">
+						<div class="form-group">
+							<label class="col-md-3 control-label" for="inputSuccess">Select
+								Zone</label>
+							<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+							<div class="col-md-6">
+								<select name="zoneId" class="form-control mb-md">
+								<option>Choose One</option>
+									<c:forEach items="${sessionScope.zone }" var="x">
+										<option value="${x.zoneId }">${x.zoneName }</option>
+									</c:forEach>
+
+								</select>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label">Add Ward <span
-							class="required"></span></label>
-						<div class="col-md-6">
-							<input type="text" name="fullname" class="form-control"
-								placeholder="Add Ward" required />
+						<div class="form-group">
+							<label class="col-md-3 control-label">Add Ward <span
+								class="required"></span></label>
+							<div class="col-md-6">
+								<input type="text" name="ward" class="form-control"
+									placeholder="Add Ward" required />
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label" for="textareaAutosize">Ward
-							Description</label>
-						<div class="col-md-6">
-							<textarea class="form-control" rows="3" id="textareaAutosize"
-								data-plugin-textarea-autosize></textarea>
+						<div class="form-group">
+							<label class="col-md-3 control-label" for="textareaAutosize">Ward
+								Description</label>
+							<div class="col-md-6">
+								<textarea name="ward_des" class="form-control" rows="3" id="textareaAutosize"
+									data-plugin-textarea-autosize></textarea>
+							</div>
 						</div>
-					</div>
 
 
 
-				</div>
-				<footer class="panel-footer">
-					<div class="row">
-					<input type="hidden" name="flag" value="insert">
-						<div class="col-sm-9 col-sm-offset-3">
-							<button class="btn btn-primary">Submit</button>
-							<button type="reset" class="btn btn-default">Reset</button>
-						</div>
 					</div>
-				</footer>
-			</section>
+					<footer class="panel-footer">
+						<div class="row">
+							<input type="hidden" name="flag" value="insert">
+							<div class="col-sm-9 col-sm-offset-3">
+								<button class="btn btn-primary">Submit</button>
+								<button type="reset" class="btn btn-default">Reset</button>
+							</div>
+						</div>
+					</footer>
+				</section>
 			</form>
 		</div>
 

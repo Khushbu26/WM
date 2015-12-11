@@ -59,7 +59,7 @@
 			<!-- start: sidebar -->
 			<jsp:include page="menu.jsp"/>
 			<!-- end: sidebar -->
-
+			<form action="<%=request.getContextPath()%>/DustbinController" method="post">
 			<section role="main" class="content-body">
 				<jsp:include page="page_header.jsp"/>
 
@@ -86,7 +86,7 @@
 						<label class="col-md-3 control-label">Dustbin Number <span
 							class="required"></span></label>
 						<div class="col-md-6">
-							<input type="text" name="fullname" class="form-control"
+							<input type="text" name="dustno" class="form-control"
 								placeholder="Add dustbin number" required />
 						</div>
 					</div>
@@ -94,7 +94,7 @@
 						<label class="col-md-3 control-label">Dustbin Name <span
 							class="required"></span></label>
 						<div class="col-md-6">
-							<input type="text" name="fullname" class="form-control"
+							<input type="text" name="dust" class="form-control"
 								placeholder="Add dustbin name" required />
 						</div>
 					</div>
@@ -104,6 +104,7 @@
 				<footer class="panel-footer">
 					<div class="row">
 						<div class="col-sm-9 col-sm-offset-3">
+						<input type="hidden" name="flag" value="insert">
 							<button class="btn btn-primary">Submit</button>
 							<button type="reset" class="btn btn-default">Reset</button>
 						</div>

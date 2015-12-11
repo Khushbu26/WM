@@ -4,23 +4,42 @@
 "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 
 <hibernate-configuration>
-<session-factory>
-  <property name="hibernate.connection.driver_class"> com.mysql.jdbc.Driver</property>
-  <property name="hibernate.connection.url">jdbc:mysql://localhost/wm</property>
-  <property name="hibernate.connection.username">root</property>
-  <property name="hibernate.connection.password"></property>
-  <property name="hibernate.connection.pool_size">10</property>
-  <property name="show_sql">true</property>
-  <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-  <property name="hibernate.hbm2ddl.auto">update</property>
-  <!-- Mapping files -->
+	<session-factory>
+		<property name="hibernate.connection.driver_class"> com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost/wm</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password"></property>
+		<property name="hibernate.connection.pool_size">10</property>
+		<property name="show_sql">true</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<!-- Mapping files -->
 
-    
-      <mapping resource="vo/zone.hbm.xml"/>
-       <mapping resource="vo/ward.hbm.xml"/>
- 
 
-</session-factory>
+		<mapping resource="vo/zone.hbm.xml" />
+		<mapping resource="vo/ward.hbm.xml" />
+		<mapping resource="vo/area.hbm.xml" />
+		<mapping resource="vo/dustbin.hbm.xml" />
+		<mapping resource="vo/schedule.hbm.xml" />
+		<mapping resource="vo/category.hbm.xml" />
+		<mapping resource="vo/event.hbm.xml" />
+		<mapping resource="vo/subcategory.hbm.xml" />
+		<mapping resource="vo/roadsideunit.hbm.xml" />
+		<mapping resource="vo/u_schedule.hbm.xml" />
+		<mapping resource="vo/u_email.hbm.xml" />
+		<mapping resource="vo/u_complaint.hbm.xml" />
+		<mapping resource="vo/waste_info.hbm.xml" />
+		<mapping resource="vo/u_file_upload.hbm.xml" />
+		<mapping resource="vo/u_contact.hbm.xml" />
+		<mapping resource="vo/u_signin.hbm.xml" />
+		<mapping resource="vo/cstaffreg.hbm.xml" />
+		<mapping resource= "vo/cassignarea.hbm.xml" />
+		<mapping resource= "vo/u_registration.hbm.xml" />
+		<mapping resource= "vo/login.hbm.xml" />
+							
+						
+
+	</session-factory>
 </hibernate-configuration>
 
 

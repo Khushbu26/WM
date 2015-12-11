@@ -6,7 +6,69 @@
 
 <!-- Basic -->
 <meta charset="UTF-8">
+		<script>
+  function loadWard()
+	{
+	  
 
+		var zoneId=document.getElementById("zoneId");
+		var xmlhttp;
+		//alert("2222");
+		if (window.XMLHttpRequest)
+		  {// code for IE7+, Firefox, Chrome, Opera, Safari
+		  	xmlhttp=new XMLHttpRequest();
+		  }
+		else
+		  {// code for IE6, IE5
+		  	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		
+				removeAllWard();
+		
+		xmlhttp.onreadystatechange = function() 
+		{
+			if (xmlhttp.readyState == 4)
+			{
+				var jsonObj = JSON.parse(xmlhttp.responseText);
+				for(i=0 ; i < jsonObj.length ; i++)
+				{
+					var createOption=document.createElement("option");
+					
+					createOption.value=jsonObj[i].wardId;
+					createOption.text=jsonObj[i].wardName;
+					
+					document.areaForm.wardId.options.add(createOption);
+					
+				}
+			}
+			else
+			{
+				loader();
+			}
+		}
+		//alert("zzz is jj");
+		xmlhttp.open("get", "${pageContext.request.contextPath}/AreaController?flag=loadWard&zoneId="+zoneId.value, true);
+		xmlhttp.send();
+		/* jQuery(".chosen-select1").chosen({'width':'100%','white-space':'nowrap'}); */
+		/* Holds the status of the XMLHttpRequest. Changes from 0 to 4:
+			0: request not initialized
+			1: server connection established
+			2: request received
+			3: processing request
+			4: request finished and response is ready */
+	}
+	
+  
+  function removeAllWard()
+	{
+	  var removeWard=document.areaForm.wardId.options.length;
+		for(i=removeWard ; i>0 ; i-- )
+		{
+			document.areaForm.wardId.remove(i);
+		}
+	}
+
+</script>
 <title>ADD AREA</title>
 <meta name="keywords" content="HTML5 Admin Template" />
 <meta name="description"
@@ -52,89 +114,97 @@
 	<section class="body">
 
 		<!-- start: header -->
-		<jsp:include page="header.jsp"/>
+		<jsp:include page="header.jsp" />
 		<!-- end: header -->
 
 		<div class="inner-wrapper">
 			<!-- start: sidebar -->
-			<jsp:include page="menu.jsp"/>			<!-- end: sidebar -->
-
-			<section role="main" class="content-body">
-				<jsp:include page="page_header.jsp"/>
-
-
-
+			<jsp:include page="menu.jsp" />
+			<!-- end: sidebar -->
+			<form action="<%=request.getContextPath()%>/AreaController" method="POST" name="areaForm">
+				<section role="main" class="content-body">
+					<jsp:include page="page_header.jsp" />
 
 
-				<!-- hinal block start -->
-				<header class="panel-heading">
-					<div class="panel-actions">
-						<a href="#" class="panel-action panel-action-toggle"
-							data-panel-toggle></a> <a href="#"
-							class="panel-action panel-action-dismiss" data-panel-dismiss></a>
-					</div>
 
-					<h2 class="panel-title">ADD AREA</h2>
-					<!-- <p class="panel-subtitle">
+
+
+					<!-- hinal block start -->
+					<header class="panel-heading">
+						<div class="panel-actions">
+							<a href="#" class="panel-action panel-action-toggle"
+								data-panel-toggle></a> <a href="#"
+								class="panel-action panel-action-dismiss" data-panel-dismiss></a>
+						</div>
+
+						<h2 class="panel-title">ADD AREA</h2>
+						<!-- <p class="panel-subtitle">
 											Basic validation will display a label with the error after the form control.
 										</p> -->
-				</header>
+					</header>
 
 
-				<div class="panel-body">
-					<div class="form-group">
-						<label class="col-md-3 control-label" for="inputSuccess">Select Zone</label>
-						<div class="col-md-6">
-							<select class="form-control mb-md">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select> 
+					<div class="panel-body">
+						<div class="form-group">
+							<label class="col-md-3 control-label" for="inputSuccess">Select
+								Zone</label>
+							<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+							<div class="col-md-6">
+								<select name="zone" id="zoneId" onchange="loadWard()" class="form-control mb-md">
+								<option>Choose One</option>
+									<c:forEach items="${sessionScope.zone }" var="x">
+										<option value="${x.zoneId }">${x.zoneName }</option>
+									</c:forEach>
+
+								</select>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label" for="inputSuccess">Select Ward</label>
-						<div class="col-md-6">
-							<select class="form-control mb-md">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
-							</select> 
+						<div class="form-group">
+							<label class="col-md-3 control-label" for="inputSuccess">Select
+								Ward</label>
+							<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+							<div class="col-md-6">
+								<select name="wardId" id="wardId" data-rule-required="true"
+									class="form-control">
+									<option>Choose One</option>
+									<%-- <c:forEach items="${sessionScope.ward }" var="x">
+										<option value="${x.wardId }">${x.wardName }</option>
+									</c:forEach> --%>
+
+								</select>
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label">Add Area <span
-							class="required"></span></label>
-						<div class="col-md-6">
-							<input type="text" name="fullname" class="form-control"
-								placeholder="Add Area" required />
+						<div class="form-group">
+							<label class="col-md-3 control-label">Add Area <span
+								class="required"></span></label>
+							<div class="col-md-6">
+								<input type="text" name="area" class="form-control"
+									placeholder="Add Area" required />
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label" for="textareaAutosize">Area
-							Description</label>
-						<div class="col-md-6">
-							<textarea class="form-control" rows="3" id="textareaAutosize"
-								data-plugin-textarea-autosize></textarea>
+						<div class="form-group">
+							<label class="col-md-3 control-label" for="textareaAutosize">Area
+								Description</label>
+							<div class="col-md-6">
+								<textarea name="area_des" class="form-control" rows="3"
+									id="textareaAutosize" data-plugin-textarea-autosize></textarea>
+							</div>
 						</div>
-					</div>
 
 
 
-				</div>
-				<footer class="panel-footer">
-					<div class="row">
-						<div class="col-sm-9 col-sm-offset-3">
-							<button class="btn btn-primary">Submit</button>
-							<button type="reset" class="btn btn-default">Reset</button>
-						</div>
 					</div>
-				</footer>
-			</section>
+					<footer class="panel-footer">
+						<div class="row">
+							<input type="hidden" name="flag" value="insert">
+							<div class="col-sm-9 col-sm-offset-3">
+
+								<button class="btn btn-primary">Submit</button>
+								<button type="reset" class="btn btn-default">Reset</button>
+							</div>
+						</div>
+					</footer>
+				</section>
 			</form>
 		</div>
 

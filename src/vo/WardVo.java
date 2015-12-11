@@ -31,6 +31,5 @@ public class WardVo implements Serializable{
 	public void setZoneref(ZoneVo zoneref) {
 		this.zoneref = zoneref;
 	}
-	
 
 }

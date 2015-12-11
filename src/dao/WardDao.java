@@ -152,13 +152,8 @@ public class WardDao {
 				l=q.list();
 				return l;
 			
-			
-		}
-
 		
-
-
-
-
+				
+		}
 
 }

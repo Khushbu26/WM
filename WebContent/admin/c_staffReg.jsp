@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!doctype html>
 <html class="fixed">
 <head>
 
@@ -39,15 +42,15 @@
 
 <!-- Head Libs -->
 <script src="assets/vendor/modernizr/modernizr.js">
-function validate(){  
-	var pin=document.myform.pin.value;  
-	if (isNaN(pin)){  
-	  document.getElementById("numloc").innerHTML="Enter Numeric value only";  
-	  return false;  
-	}else{  
-	  return true;  
-	  }  
-	}  
+	function validate() {
+		var pin = document.myform.pin.value;
+		if (isNaN(pin)) {
+			document.getElementById("numloc").innerHTML = "Enter Numeric value only";
+			return false;
+		} else {
+			return true;
+		}
+	}
 </script>
 </head>
 <body>
@@ -55,7 +58,7 @@ function validate(){
 	<section class="body-sign">
 		<div class="center-sign">
 			<a href="/" class="logo pull-left"> <img
-				src="assets/images/logo.png" height="54" alt="Porto Admin" />
+				src="assets/images/logo-footer.png" height="54" alt="Porto Admin" />
 			</a>
 
 			<div class="panel panel-sign">
@@ -65,23 +68,42 @@ function validate(){
 					</h2>
 				</div>
 				<div class="panel-body">
-					<form name="myform" onsubmit="return validate()">
+					<form action="<%=request.getContextPath()%>/CStaffRegController"
+						method="post">
 						<div class="form-group mb-lg">
-							<label>Labor Name*</label> <input name="name" type="text"
+							<label>Select Staff Type*</label>
+							<div class="form-group">
+								<div class="form-group mb-lg">
+									<select class="form-control input-lg mb-md" name="staff">
+										<option value="management">Management</option>
+										<option value="labour">Labour</option>
+										<option value="other">Other</option>
+									</select>
+
+
+								</div>
+							</div>
+						</div>
+						<div class="form-group mb-lg">
+							<label>Employee Name*</label> <input name="name" type="text"
 								class="form-control input-lg" required />
 						</div>
 						<div class="form-group mb-lg">
 							<label>Address*</label>
-							<textarea rows="3" cols="40" name="name"
+							<textarea rows="3" cols="40" name="address"
 								class="form-control input-lg" required></textarea>
 							<!-- <input name="name"type="text" class="form-control input-lg"/> -->
 						</div>
 						<div class="form-group mb-lg">
-							<label>Pin*</label> 
-							<input name="pin" type="text" class="form-control input-lg" placeholder="Only Digits" required />
+							<label>Pin*</label> <input name="pin" type="text"
+								class="form-control input-lg" placeholder="Only Digits" required />
 							<span id="numloc"></span>
 						</div>
-
+						<div class="form-group mb-lg">
+							<label>Contact Number*</label> <input name="contactnumber"
+								type="text" class="form-control input-lg"
+								placeholder="Only Digits" required />
+						</div>
 
 						<div class="form-group mb-lg">
 							<label>E-mail Address</label> <input name="email" type="email"
@@ -110,8 +132,10 @@ function validate(){
 								</div>
 							</div>
 							<div class="col-sm-4 text-right">
-								<button type="submit"  value="submit"class="btn btn-primary hidden-xs">Sign
-									Up</button>
+								<input type="hidden" name="flag" value="insert">
+
+								<button type="submit" value="submit"
+									class="btn btn-primary hidden-xs">Sign Up</button>
 								<button type="submit" value="submit"
 									class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Sign
 									Up</button>

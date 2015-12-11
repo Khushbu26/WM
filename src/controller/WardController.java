@@ -1,8 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,9 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.WardDao;
+import dao.ZoneDao;
 import vo.WardVo;
 import vo.ZoneVo;
-import dao.ZoneDao;
+
+import java.util.List;
 
 /**
  * Servlet implementation class WardController
@@ -62,23 +62,22 @@ public class WardController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-	
-	String flag=request.getParameter("flag");
-	System.out.println(flag);
-	if(flag.equals("insert"))
-	{
-		insert(request,response);
-	}
-	if(flag.equals("update"))
-	{ 
-		update(request,response);
-	}
+		String flag=request.getParameter("flag");
+		System.out.println(flag);
+		if(flag.equals("insert"))
+		{
+			insert(request,response);
+		}
+		if(flag.equals("update"))
+		{ 
+			update(request,response);
+		}
 	}
 	protected void insert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String wardName =request.getParameter("ward");
 		String wardDes =request.getParameter("ward_des");
 		System.out.println(wardDes + wardName);
-		int i = Integer.parseInt(request.getParameter("zoneID"));
+		int i = Integer.parseInt(request.getParameter("zoneId"));
 		ZoneVo zoneVo = new ZoneVo();
 		zoneVo.setZoneId(i);
 		
@@ -96,6 +95,7 @@ public class WardController extends HttpServlet {
 }
 	protected void load(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		System.out.println("in load method");
 			ZoneDao zoneDao= new ZoneDao();
 			List<?> ls =zoneDao.load();
 			HttpSession r= request.getSession();
@@ -126,24 +126,26 @@ public class WardController extends HttpServlet {
 		WardDao wardDao=new WardDao();
 		ZoneDao zoneDao= new ZoneDao();
 		List<?> ls =zoneDao.load();
-		
+		System.out.println("in edit method");
 		List<?> list =wardDao.edit(wardVo);
 		System.out.print("edit size is"+list.size());
 		HttpSession r= request.getSession();
 		r.setAttribute("editward", list);
 		r.setAttribute("zone", ls);
 		response.sendRedirect("admin/editward.jsp");
+		System.out.println("end of edit method");
 	}
 
 	protected void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		System.out.println("11111111111");
+		System.out.println("in update method");
 		String wardName =request.getParameter("ward");
 		String wardDes =request.getParameter("ward_des");
 		int ed=Integer.parseInt(request.getParameter("id"));
-		int pd=Integer.parseInt(request.getParameter("zone_id"));
+		System.out.println("11111111111");
+		int pd=Integer.parseInt(request.getParameter("zoneId"));
 		System.out.println("Data:"+wardDes +""+ wardName+""+ed+pd);
-		//System.out.println("11111111111");
+		System.out.println("11111111111");
 		
 
 		ZoneVo zoneVo=new ZoneVo();
@@ -160,8 +162,8 @@ public class WardController extends HttpServlet {
 		
 		WardDao wardDao=new WardDao();
 		wardDao.update(wardVo);
-		response.sendRedirect("admin/manage_ward.jsp");
-		
+		response.sendRedirect("admin/add_ward.jsp");
+		System.out.println("end of update method");
 	}
 	
 	protected void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
@@ -191,7 +193,6 @@ public class WardController extends HttpServlet {
 		search(request, response);
 		
 	}
-
 
 
 }
