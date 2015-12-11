@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="vo.CategoryVo" table="category">
+
+		<id name="categoryId" type="int" column="category_Id">
+			<generator class="increment" />
+		</id>
+
+		<property name="categoryName" >
+			<column name="category" />
+		</property>
+
+		<property name="categoryDes" >
+			<column name="category_Des" />
+		</property>
+
+	
+ 	</class>
+
+</hibernate-mapping>

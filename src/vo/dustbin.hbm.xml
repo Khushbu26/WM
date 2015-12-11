@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="vo.DustbinVo" table="dust">
+
+		<id name="dustId" type="int" column="dustId">
+			<generator class="increment" />
+		</id>
+
+		<property name="dustNo" >
+			<column name="dustNo" />
+		</property>
+
+		<property name="dustName" >
+			<column name="dustName" />
+		</property>
+
+		<property name="latitude" type="double" >
+			<column name="latitude"  />
+		</property>
+		
+		<property name="longitude" type="double" >
+			<column name="longitude" />
+		</property>
+		
+		
+ 	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="vo.USignVo" table="sign_Form">
+
+		<id name="signinId" type="int" column="singin_Id">
+			<generator class="increment" />
+		</id>
+
+		<property name="fName" >
+			<column name="first_name" />
+		</property>
+		
+		<property name="lName" >
+			<column name="last_name" />
+		</property>
+		
+		<property name="moNo" >
+			<column name="mo_No" />
+		</property>
+		
+		<property name="email" >
+			<column name="email" />
+		</property>
+		
+		<property name="password" >
+			<column name="password" />
+		</property>
+		
+		<property name="city" >
+			<column name="city" />
+		</property>
+		
+		<property name="pin" type="int" >
+			<column name="pin" />
+		</property>
+		
+ 	</class>
+
+</hibernate-mapping>

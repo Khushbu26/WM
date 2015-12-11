@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="vo.CStaffRegVo" table="Staff_reg">
+
+		<id name="staffId" type="int" column="staff_Id">
+			<generator class="increment" />
+		</id>
+
+		<property name="staff" >
+			<column name="staff" />
+		</property>
+
+		<property name="employeeName">
+			<column name="employee_name" />
+		</property>
+		
+		<property name="address">
+			<column name="address" />
+		</property>
+		
+		<property type="int" name="pin">
+			<column name="pin" />
+		</property>
+		
+		<property name="contactNo">
+			<column name="contact_no" />
+		</property>
+		
+		<property name="email">
+			<column name="email" />
+		</property>
+		
+		<property name="password">
+			<column name="password" />
+		</property>
+		
+		
+	</class>
+
+</hibernate-mapping>

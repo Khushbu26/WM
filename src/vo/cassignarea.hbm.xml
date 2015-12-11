@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="vo.CAssignAreaVo" table="Staff_assign">
+
+		<id name="cAssignAreaId" type="int" column="cAssignArea_Id">
+			<generator class="increment" />
+		</id>
+
+		
+		<many-to-one name="cStaffRef" column="cStaff_ref" class="vo.CStaffRegVo"></many-to-one>
+		<many-to-one name="areaRef" column="area_ref" class="vo.AreaVo"></many-to-one>
+		
+	</class>
+
+</hibernate-mapping>

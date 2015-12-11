@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="vo.RoadsideunitVo" table="road_Side_Unit">
+
+		<id name="roadId" type="int" column="road_Id">
+			<generator class="increment" />
+		</id>
+
+		<property name="longi" type="double">
+			<column name="longi" />
+		</property>
+
+		<property name="lati" type="double">
+			<column name="lati" />
+		</property>
+		<many-to-one name="zoneRef" column="zone_ref" class="vo.ZoneVo"></many-to-one>
+		<many-to-one name="wardRef" column="ward_ref" class="vo.WardVo"></many-to-one>
+		<many-to-one name="areaRef" column="area_ref" class="vo.AreaVo"></many-to-one>		
+		<many-to-one name="dustbinRef" column="dust_ref" class="vo.DustbinVo"></many-to-one>
+
+	
+ 	</class>
+
+</hibernate-mapping>

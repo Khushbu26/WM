@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="vo.UContactVo" table="contactForm">
+
+		<id name="contactId" type="int" column="contact_id">
+			<generator class="increment" />
+		</id>
+
+		<property name="contactName" >
+			<column name="contact_name" />
+		</property>
+		
+		<property name="contactEmail" >
+			<column name="contact_email" />
+		</property>
+		
+		<property name="contactSubject" >
+			<column name="contact_subject" />
+		</property>
+		
+		<property name="contactMessage" >
+			<column name="contact_message" />
+		</property>
+		
+ 	</class>
+
+</hibernate-mapping>

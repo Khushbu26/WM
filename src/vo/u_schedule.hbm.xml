@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="vo.UScheduleVo" table="user_schedule">
+
+		<id name="scheduleId" type="int" column="schedule_Id">
+			<generator class="increment" />
+		</id>
+		
+		
+	<many-to-one name="areaRef" column="area_name" class="vo.AreaVo"></many-to-one>
+	<many-to-one name="scheduleRef" column="time" class="vo.UScheduleVo"></many-to-one>
+ 	</class>
+
+</hibernate-mapping>

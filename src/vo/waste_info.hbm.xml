@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="vo.WasteInfoVo" table="wasteinfo">
+
+		<id name="waste_id" type="int" column="waste_Id">
+			<generator class="increment" />
+		</id>
+
+		<property name="waste_info" >
+			<column name="waste_Info" />
+		</property>
+		<property name="des" >
+			<column name="des" />
+		</property>
+
+		
+		
+		<many-to-one name="areaRef" column="area_Ref" class="vo.AreaVo"></many-to-one>
+		
+
+	
+ 	</class>
+
+</hibernate-mapping>
